@@ -21,7 +21,7 @@ include:
 
 postgresql-server:
   pkg.installed:
-    - pkgs: {{ pkgs }}
+    - pkgs: {{ pkgs|json }}
 {%- if postgres.use_upstream_repo %}
     - refresh: True
     - require:
@@ -100,7 +100,7 @@ postgresql-pg_hba:
     - source: {{ postgres['pg_hba.conf'] }}
     - template: jinja
     - defaults:
-        acls: {{ postgres.acls }}
+        acls: {{ postgres.acls|json }}
 {%- else %}
     - replace: False
 {%- endif %}

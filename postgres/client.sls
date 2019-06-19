@@ -18,7 +18,7 @@ include:
 
 postgresql-client-libs:
   pkg.installed:
-    - pkgs: {{ pkgs }}
+    - pkgs: {{ pkgs|json }}
 {%- if postgres.use_upstream_repo %}
     - refresh: True
     - require:
